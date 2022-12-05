@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,32 +7,32 @@ import AddTask from "./components/AddTask";
 import About from "./components/About";
 
 const App = () => {
-  const [showAddTask, setShowAddTask] = useState(true);
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: "doctor appointments",
-      day: "5th feb",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "doctor appointments",
-      day: "5th feb",
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: "doctor appointments",
-      day: "5th feb",
-      reminder: true,
-    },
+    // {
+    //   id: 1,
+    //   text: "doctor appointments",
+    //   day: "5th feb",
+    //   reminder: true,
+    // },
+    // {
+    //   id: 2,
+    //   text: "doctor appointments",
+    //   day: "5th feb",
+    //   reminder: true,
+    // },
+    // {
+    //   id: 3,
+    //   text: "doctor appointments",
+    //   day: "5th feb",
+    //   reminder: true,
+    // },
   ]);
 
   // Add Task
-  const addTask = () => {
+  const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
-    const newTask = { id, ...tasks };
+    const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
   };
 
