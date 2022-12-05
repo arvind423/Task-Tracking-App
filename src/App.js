@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -7,7 +7,7 @@ import AddTask from "./components/AddTask";
 import About from "./components/About";
 
 const App = () => {
-  const [showAddTask, setShowAddTask] = useState(false);
+  const [showAddTask, setShowAddTask] = useState(true);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -29,34 +29,32 @@ const App = () => {
     },
   ]);
 
-  
-  
-  
-
   // Add Task
-    const addTask=()=>{
-      const id = Math.floor(Math.random() * 10000) + 1;
-      const newTask={id,...tasks};
-      setTasks([...tasks,newTask]);
-    }
+  const addTask = () => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...tasks };
+    setTasks([...tasks, newTask]);
+  };
 
-    // const id = Math.floor(Math.random() * 10000) + 1
-    // const newTask = { id, ...task }
-    // setTasks([...tasks, newTask])
-  
+  // const id = Math.floor(Math.random() * 10000) + 1
+  // const newTask = { id, ...task }
+  // setTasks([...tasks, newTask])
 
   // Delete Task
 
-    const deleteTask=(id)=>{
-      setTasks(tasks.filter((task)=>task.id!==id));
-    } 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
 
   // Toggle Reminder
-  
-    const toggleReminder=()=>{
 
-    }
-   
+  const toggleReminder = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
 
   return (
     <Router>
